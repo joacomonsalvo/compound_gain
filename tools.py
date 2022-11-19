@@ -58,6 +58,12 @@ def cells(value) -> str:
 
 
 def lines(data: list, freq: list):
+    """
+    Iterates through data to generate a loop in daily view
+    :param data: list that contains money values
+    :param freq: total or daily
+    :return: 0 if everything worked fine
+    """
     for i in range(0, len(data)):
         line = cells(freq[i]) + cells(data[i])
         print(line)
@@ -67,6 +73,11 @@ def lines(data: list, freq: list):
 #  Type of detailed information functions
 
 def total(data: list):
+    """
+    Total line generator
+    :param data: list with money values
+    :return: 0 if everything worked fine
+    """
     text1 = "|  Total  |"
     text2 = cells(data[-1])
 
@@ -78,6 +89,11 @@ def total(data: list):
 
 
 def daily(data: list):
+    """
+    Prints the daily data of the investment
+    :param data: list with money values
+    :return: 0 if everything worked fine
+    """
     sum_total = "|  Total  |"
     days = ["day" + str(num) for num in range(0, len(data))]
 
@@ -92,6 +108,12 @@ def daily(data: list):
 
 
 def format_data(data: list, detail="t"):
+    """
+    Format data for the appropriate periodicity
+    :param data: list that contains invested money values
+    :param detail: if the information to be shown needs to be total or daily
+    :return: 0 if everything worked fine
+    """
     if detail == "t":
         total(data)
     elif detail == "d":
@@ -99,6 +121,10 @@ def format_data(data: list, detail="t"):
 
 
 def gains():
+    """
+    Main function
+    :return: 0 if everything worked fine
+    """
     params = params_io()
     data = get_compound(params[0], params[1], params[2])
     format_data(data, params[3])
